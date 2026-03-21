@@ -48,7 +48,7 @@ Normalisation is the process of organising a relational database to reduce data 
 
 ### 1NF (First Normal Form)
 
-![](/Users/macbookair/Desktop/Screenshot%202026-03-21%20at%2007.29.50.png)
+![1NF Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/1NF.png)
 
   Repeating DVD groups were removed by introducing a composite primary key of LoanNo and CopyNo. All values are now atomic, however many fields still only partially depend on part of the composite key.
 
@@ -56,7 +56,7 @@ Normalisation is the process of organising a relational database to reduce data 
 
 ### 2NF (Second Normal Form)
 
-![](/Users/macbookair/Desktop/Screenshot%202026-03-21%20at%2007.30.06.png)
+![2NF Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/2NF.png)
 
 Partial dependencies were removed by splitting the table into five separate tables — BORROWER, LOAN, LOAN_CATEGORY, COPY and DVD. Each non-key attribute now depends on the whole primary key of its table. However the DVD table still contains a transitive dependency between RentalCategory and RentalCost.
 
@@ -64,7 +64,7 @@ Partial dependencies were removed by splitting the table into five separate tabl
 
 ### 3NF (Third Normal Form)
 
-![](/Users/macbookair/Desktop/Screenshot%202026-03-21%20at%2007.30.48.png)
+![3NF Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/3NF.png)
 
  The transitive dependency DVDNo → RentalCategory → RentalCost was resolved by extracting a new RENTAL_CATEGORY table. DVD now holds a CategoryID foreign key pointing to it. All non-key attributes in every table now depend directly and only on their primary key.
 
