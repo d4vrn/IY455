@@ -40,7 +40,7 @@ Normalisation is the process of organising a relational database to reduce data 
 
 ### UNF (Un-normalised form)
 
-![](/Users/macbookair/Desktop/Screenshot%202026-03-21%20at%2007.29.25.png)
+![UNF Table](https://raw.githubusercontent.com/d4vrn/IY455/main/UNF.png)
 
  The original data contains repeating groups — a single loan record holds multiple DVD and Copy details. All fields exist in one flat unstructured table with no defined primary key.
 
