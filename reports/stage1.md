@@ -86,7 +86,7 @@ Partial dependencies were removed by splitting the table into five separate tabl
 
 ## Task 2 - ERD (Entity Relationship Diagram)
 
-<sup>![](/Users/macbookair/Downloads/ERD.svg)</sup>
+<sup>![ERD](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/ERD.svg)</sup>
 
 ---
 
