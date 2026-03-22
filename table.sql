@@ -229,6 +229,16 @@ INSERT INTO Loan_Category (loanId, copyId, returnDueDate) VALUES
 
 
 
-show tables;
+SHOW TABLES;
 
-select * from Rental_Category;
+SELECT * FROM Rental_Category;
+
+SELECT * FROM Borrower;
+
+SELECT * FROM DVD;
+
+SELECT * FROM Copy;
+
+SELECT * FROM Loan;
+
+SELECT * FROM Loan_Category;
