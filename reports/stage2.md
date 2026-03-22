@@ -1,6 +1,36 @@
+# IY455 Stage 2
+
+| Assessment Details | Please Complete All Details |
+| ------------------ | --------------------------- |
+| Group              | B                           |
+| Module Title       | Implementation Model        |
+| Assessment Type    | Coursework                  |
+| Module Tutor Name  | Mustafa Ghashim             |
+| Student ID Number  | P500796                     |
+| Date of Submission | 22/2/2026                   |
+| Word Count         | 592                         |
+
+- [x] *I confirm that this assignment is my own work. Where I have referred to academic sources, I have provided in-text citations and included the sources in
+  the final reference list.*
+
+- [x] *Where I have used AI, I have cited and referenced appropriately.
+
+---
+
+## Task 3 - SQL code and print screen of SQL output
+
+### Database Creation:
+
+```sql
 CREATE DATABASE IF NOT EXISTS dvd_loan;
 USE dvd_loan;
+```
 
+---
+
+### Table Creation:
+
+```sql
 CREATE TABLE Rental_Category (
     categoryId      INT             NOT NULL AUTO_INCREMENT,
     categoryName    VARCHAR(50)     NOT NULL,
@@ -54,8 +84,23 @@ CREATE TABLE Loan_Category (
     FOREIGN KEY (copyId) REFERENCES Copy(copyId)
 );
 
+```
 
+---
 
+### Tables:
+
+```sql
+SHOW TABLES;
+```
+
+![](/Users/macbookair/Downloads/IY455/images/tables.png)
+
+---
+
+### Inserting Data:
+
+```sql
 INSERT INTO Rental_Category (categoryName, rentalDuration, rentalCost, fineChargeRate) VALUES
 ('Action',      3, 4.00, 1.00),
 ('Adventure',   7, 3.50, 0.50),
@@ -219,6 +264,7 @@ INSERT INTO Loan_Category (loanId, copyId, returnDueDate) VALUES
 (2, 7,  '2026-03-08'),
 (2, 12, '2026-03-12'),
 (3, 9,  '2026-03-13'),
+
 (4, 15, '2026-03-15'),
 (4, 16, '2026-03-15'),
 (5, 18, '2026-03-15'),
@@ -226,19 +272,80 @@ INSERT INTO Loan_Category (loanId, copyId, returnDueDate) VALUES
 (7, 6,  '2026-03-21'),
 (7, 11, '2026-03-25'),
 (8, 13, '2026-03-26');
+```
 
+---
 
+### Verifying Data:
 
-SHOW TABLES;
+- Rental_Category table
 
+```sql
 SELECT * FROM Rental_Category;
+```
 
-SELECT * FROM Borrower;
+![](/Users/macbookair/Downloads/IY455/images/rental_category.png)
 
+
+
+- Borrower table
+
+```sql
+SELECT * FROM Rental_Category;
+```
+
+![](/Users/macbookair/Downloads/IY455/images/borrower.png)
+
+
+
+- DVD table
+
+```sql
 SELECT * FROM DVD;
+```
 
+![](/Users/macbookair/Downloads/IY455/images/dvd_p1.png)
+
+![](/Users/macbookair/Downloads/IY455/images/dvd_p2.png)
+
+![](/Users/macbookair/Downloads/IY455/images/dvd_p3.png)
+
+
+
+- Copy table
+
+```sql
 SELECT * FROM Copy;
+```
 
+![](/Users/macbookair/Downloads/IY455/images/copy.png)
+
+
+
+- Loan table
+
+```sql
 SELECT * FROM Loan;
+```
 
+![](/Users/macbookair/Downloads/IY455/images/loan.png)
+
+
+
+
+
+- Loan_Category table (junction table)
+
+```sql
 SELECT * FROM Loan_Category;
+```
+
+![](/Users/macbookair/Downloads/IY455/images/loan_category.png)
+
+The `Loan_Category` table is a junction table, also known as a bridge or associative table. It exists to resolve the many-to-many relationship between `Loan` and `Copy` — a single loan can include multiple DVD copies, and a single copy can appear across many loans over time. Rather than storing a surrogate ID, `Loan_Category` uses a composite primary key made up of `loanId` and `copyId` together, as the same copy cannot appear on the same loan twice. This design is a direct result of the normalisation process and ensures referential integrity is maintained across the database (Connolly and Begg, 2014).
+
+---
+
+### Reference List:
+
+Connolly, T. and Begg, C. (2014) *Database Systems: A Practical Approach to Design, Implementation and Management*. 6th edn. Harlow: Pearson Education.
