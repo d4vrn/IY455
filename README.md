@@ -47,7 +47,7 @@ IY455/
 ## Stages
 
 ### Stage 1 — Normalisation & ERD
-> **Status:** Complete ✅ | **Submitted:** 22nd February 2026
+> **Status:** Complete ✅ 
 
 - Normalised the DVD Loan Management System data from UNF through to 3NF
 - Produced an Entity Relationship Diagram showing all 6 entities, attributes, keys and cardinalities
@@ -56,7 +56,7 @@ IY455/
 ---
 
 ### Stage 2 — DDL SQL (Create Database)
-> **Status:** Complete ✅ | **Submitted:** 22nd March 2026
+> **Status:** Complete ✅ | **Submitted:** 21nd March 2026
 
 - Created all 6 tables in DataGrip using DDL SQL statements
 - Defined correct data types, primary keys, foreign keys and ENUM constraints
