@@ -10,9 +10,11 @@ CREATE TABLE Rental_Category (
     PRIMARY KEY (categoryId)
 );
 
+-- UPDATE v2 | Borrower table borrowerName separated into two attributes "borrowerFirstName" and "borrowerLastName".
 CREATE TABLE Borrower (
     borrowerId      INT             NOT NULL AUTO_INCREMENT,
-    borrowerName    VARCHAR(100)    NOT NULL,
+    borrowerFirstName    VARCHAR(100)    NOT NULL,
+    borrowerLastName    VARCHAR(100)    NOT NULL,
     borrowerAddress VARCHAR(255)    NOT NULL,
     borrowerStatus  ENUM('active', 'dormant', 'suspended', 'terminated') NOT NULL,
     PRIMARY KEY (borrowerId)
@@ -45,10 +47,13 @@ CREATE TABLE Loan (
     FOREIGN KEY (borrowerId) REFERENCES Borrower(borrowerId)
 );
 
-CREATE TABLE Loan_Category (
+-- UPDATE v2| Loan_Category changed to Loan_Line to fix confusing naming for junction table.
+-- UPDATE v3 | New attribute added to make table more realistic. "actualReturnDate"
+CREATE TABLE Loan_Line (
     loanId          INT             NOT NULL,
     copyId          INT             NOT NULL,
     returnDueDate   DATE            NOT NULL,
+    actualReturnDate DATE,
     PRIMARY KEY (loanId, copyId),
     FOREIGN KEY (loanId) REFERENCES Loan(loanId),
     FOREIGN KEY (copyId) REFERENCES Copy(copyId)
@@ -68,16 +73,21 @@ INSERT INTO Rental_Category (categoryName, rentalDuration, rentalCost, fineCharg
 ('Superhero',   1, 4.50, 1.50);
 
 
-INSERT INTO Borrower (borrowerName, borrowerAddress, borrowerStatus) VALUES
-('Ben Jones',       '28 Low Road, Nottingham NG5 3PB',      'active'),
-('Sarah Miller',    '14 High Street, Nottingham NG1 2AB',   'active'),
-('James Wilson',    '5 Park Lane, Nottingham NG7 4CD',      'active'),
-('Emily Davis',     '33 Oak Avenue, Nottingham NG3 5EF',    'dormant'),
-('Michael Brown',   '9 Elm Close, Nottingham NG8 6GH',      'active'),
-('Laura Taylor',    '21 Maple Road, Nottingham NG2 7IJ',    'suspended'),
-('Daniel White',    '7 Cedar Street, Nottingham NG6 8KL',   'active'),
-('Sophie Harris',   '15 Birch Way, Nottingham NG4 9MN',     'active');
-
+-- UPDATE v2 | Borrower Table  updated with more variety to make Stage 3 queries visible.
+-- UPDATE v3 | Following Table change. Values inserted are also changed accordingly.
+INSERT INTO Borrower (borrowerFirstName, borrowerLastName, borrowerAddress, borrowerStatus) VALUES
+('Ben',       'Jones',    '28 Low Road, Nottingham NG5 3PB',       'active'),
+('Sarah',     'Miller',   '14 High Street, Nottingham NG1 2AB',    'active'),
+('James',     'Wilson',   '5 Park Lane, Nottingham NG7 4CD',       'active'),
+('Emily',     'Davis',    '33 Oak Avenue, Nottingham NG3 5EF',     'dormant'),
+('Michael',   'Brown',    '9 Elm Close, Nottingham NG8 6GH',       'active'),
+('Laura',     'Taylor',   '21 Maple Road, Nottingham NG2 7IJ',     'suspended'),
+('Daniel',    'White',    '7 Cedar Street, Nottingham NG6 8KL',    'active'),
+('Sophie',    'Harris',   '15 Birch Way, Nottingham NG4 9MN',      'active'),
+('Oliver',    'Clarke',   '12 Pine Road, Nottingham NG9 1AB',      'active'),
+('Amelia',    'Wright',   '8 Ash Lane, Nottingham NG5 2CD',        'terminated'),
+('Thomas',    'Adams',    '31 Willow Drive, Nottingham NG3 4EF',   'active'),
+('Grace',     'Robinson', '19 Hazel Close, Nottingham NG7 6GH',    'dormant');
 
 INSERT INTO DVD (dvdId, dvdTitle, starringActor, dvdYear, categoryId) VALUES
 ('DN050',  'Guardians of the Galaxy',                      'Chris Pratt',          2014, 9),
@@ -181,27 +191,33 @@ INSERT INTO DVD (dvdId, dvdTitle, starringActor, dvdYear, categoryId) VALUES
 ('DN051',  'Personal Shopper',                             'Kristen Stewart',      2016, 7);
 
 
+-- UPDATE v3 | Increased number of copies, for better results in Stage 3 queries.
 INSERT INTO Copy (dvdId, shelfPosition, dvdStatus) VALUES
-('DN050',  'SH-A1',  'available'),
+('DN050',  'SH-A1',  'overdue'),
 ('DN0135', 'SH-A2',  'available'),
-('DN0171', 'SH-B1',  'on loan'),
+('DN0171', 'SH-B1',  'available'),
 ('DN0102', 'SH-B2',  'available'),
-('DN0188', 'SH-C1',  'on loan'),
-('DN025',  'SH-C2',  'available'),
-('DN0157', 'SH-D1',  'on loan'),
+('DN0188', 'SH-C1',  'available'),
+('DN025',  'SH-C2',  'on loan'),
+('DN0157', 'SH-D1',  'available'),
 ('DN0177', 'SH-D2',  'available'),
 ('DN0129', 'SH-E1',  'overdue'),
 ('DN0114', 'SH-E2',  'available'),
-('DN085',  'SH-F1',  'available'),
-('DN083',  'SH-F2',  'on loan'),
-('DN039',  'SH-G1',  'available'),
+('DN085',  'SH-F1',  'on loan'),
+('DN083',  'SH-F2',  'available'),
+('DN039',  'SH-G1',  'on loan'),
 ('DN0117', 'SH-G2',  'available'),
-('DN0183', 'SH-H1',  'on loan'),
-('DN0140', 'SH-H2',  'on loan'),
+('DN0183', 'SH-H1',  'overdue'),
+('DN0140', 'SH-H2',  'overdue'),
 ('DN087',  'SH-I1',  'available'),
-('DN073',  'SH-I2',  'on loan');
+('DN073',  'SH-I2',  'overdue'),
+('DN0177', 'SH-J1',  'available'),
+('DN0159', 'SH-J2',  'on loan'),
+('DN046',  'SH-K1',  'available'),
+('DN0197', 'SH-K2',  'on loan');
 
 
+-- UPDATE v3 | Several values added.
 INSERT INTO Loan (borrowerId, loanDate) VALUES
 (1, '2026-03-01'),
 (2, '2026-03-05'),
@@ -209,23 +225,32 @@ INSERT INTO Loan (borrowerId, loanDate) VALUES
 (5, '2026-03-12'),
 (7, '2026-03-14'),
 (8, '2026-03-15'),
-(1, '2026-03-18'),
-(3, '2026-03-19');
+(1, '2026-03-25'),
+(3, '2026-03-26'),
+(9, '2026-03-06'),
+(11, '2026-03-08'),
+(2, '2026-03-25');
 
 
-INSERT INTO Loan_Category (loanId, copyId, returnDueDate) VALUES
-(1, 3,  '2026-03-04'),
-(1, 5,  '2026-03-02'),
-(2, 7,  '2026-03-08'),
-(2, 12, '2026-03-12'),
-(3, 9,  '2026-03-13'),
-(4, 15, '2026-03-15'),
-(4, 16, '2026-03-15'),
-(5, 18, '2026-03-15'),
-(6, 1,  '2026-03-22'),
-(7, 6,  '2026-03-21'),
-(7, 11, '2026-03-25'),
-(8, 13, '2026-03-26');
+-- UPDATE v2 | Small mistake of naming has changed. Not to confuse. 'Loan_Category' to 'Loan_Line' junction table.
+-- UPDATE v3 | Several values added.
+INSERT INTO Loan_Line (loanId, copyId, returnDueDate, actualReturnDate) VALUES
+(1, 3,  '2026-03-04', '2026-03-06'),
+(1, 5,  '2026-03-02', '2026-03-02'),
+(2, 7,  '2026-03-08', '2026-03-10'),
+(2, 12, '2026-03-12', '2026-03-12'),
+(3, 9,  '2026-03-13', NULL),
+(4, 15, '2026-03-15', NULL),
+(4, 16, '2026-03-15', NULL),
+(5, 18, '2026-03-15', NULL),
+(6, 1,  '2026-03-16', NULL),
+(7, 6,  '2026-03-28', NULL),
+(7, 11, '2026-04-01', NULL),
+(8, 13, '2026-03-29', NULL),
+(9, 19, '2026-03-09', '2026-03-12'),
+(10, 21,'2026-03-11', '2026-03-15'),
+(11, 20,'2026-03-28', NULL),
+(11, 22,'2026-03-28', NULL);
 
 
 
@@ -241,4 +266,4 @@ SELECT * FROM Copy;
 
 SELECT * FROM Loan;
 
-SELECT * FROM Loan_Category;
+SELECT * FROM Loan_Line;
