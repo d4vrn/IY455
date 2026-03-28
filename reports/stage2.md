@@ -94,7 +94,8 @@ CREATE TABLE Loan_Category (
 SHOW TABLES;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/tables.png)
+![Tables](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/tables.png)
+
 
 ---
 
@@ -284,7 +285,7 @@ INSERT INTO Loan_Category (loanId, copyId, returnDueDate) VALUES
 SELECT * FROM Rental_Category;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/rental_category.png)
+![Rental_Category Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/rental_category.png)
 
 
 
@@ -294,7 +295,7 @@ SELECT * FROM Rental_Category;
 SELECT * FROM Rental_Category;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/borrower.png)
+![Borrower Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/borrower.png)
 
 
 
@@ -304,11 +305,11 @@ SELECT * FROM Rental_Category;
 SELECT * FROM DVD;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/dvd_p1.png)
+![DVD Table Part 1](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/dvd_p1.png)
 
-![](/Users/macbookair/Downloads/IY455/images/dvd_p2.png)
+![DVD Table Part 2](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/dvd_p2.png)
 
-![](/Users/macbookair/Downloads/IY455/images/dvd_p3.png)
+![DVD Table Part 3](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/dvd_p3.png)
 
 
 
@@ -318,7 +319,7 @@ SELECT * FROM DVD;
 SELECT * FROM Copy;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/copy.png)
+![Copy Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/copy.png)
 
 
 
@@ -328,7 +329,7 @@ SELECT * FROM Copy;
 SELECT * FROM Loan;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/loan.png)
+![Loan Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/loan.png)
 
 
 
@@ -340,7 +341,7 @@ SELECT * FROM Loan;
 SELECT * FROM Loan_Category;
 ```
 
-![](/Users/macbookair/Downloads/IY455/images/loan_category.png)
+![Loan_Category Table](https://raw.githubusercontent.com/d4vrn/IY455/main/assets/images/loan_category.png)
 
 The `Loan_Category` table is a junction table, also known as a bridge or associative table. It exists to resolve the many-to-many relationship between `Loan` and `Copy` — a single loan can include multiple DVD copies, and a single copy can appear across many loans over time. Rather than storing a surrogate ID, `Loan_Category` uses a composite primary key made up of `loanId` and `copyId` together, as the same copy cannot appear on the same loan twice. This design is a direct result of the normalisation process and ensures referential integrity is maintained across the database (Connolly and Begg, 2014).
 
