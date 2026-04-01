@@ -67,7 +67,7 @@ IY455/
 ---
 
 ### Stage 3 — DML SQL (Queries)
-> **Status:** In Progress 🔄 | **Due:** 29th March 2026
+> **Status:** Complete ✅ | **Due:** 29th March 2026
 
 SQL queries to cover:
 - All borrowers with current rentals ordered by surname
@@ -94,7 +94,7 @@ SQL queries to cover:
 
 ## Entity Relationship Diagram
 
-![ERD](assets/images/ERD.svg)
+![ERD](assets/images/updated_images/ERD_updated.svg)
 
 ---
 
