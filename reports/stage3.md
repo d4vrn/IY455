@@ -34,7 +34,7 @@
 
 **Output:** 
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/Screenshot%202026-03-30%20at%2000.04.36.png)
+![Query 1 Output](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query1.png)
 
 ---
 
@@ -62,9 +62,9 @@
 
 **Output:** 
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query2(loan_number).png)
+![Query 2 Output / number of loans](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query2(loan_number).png)
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query2(loan_days).png)
+![Query 2 Output / days](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query2(loan_days).png)
 
 ---
 
@@ -87,7 +87,7 @@
 
 **Output:**
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query3.png)
+![Query 3 Output](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query3.png)
 
 ---
 
@@ -112,7 +112,7 @@
 
 **Output:**
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query4.png)
+![Query 4 Output](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query4.png)
 
 ---
 
@@ -143,11 +143,11 @@
 
 *before update*
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query5(before).png)
+![Query 5 Output / before](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query5(before).png)
 
 *after update*
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query5(after).png)
+![Query 5 Output / after](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query5(after).png)
 
 ---
 
@@ -181,10 +181,10 @@
 
 *before delete*
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query6(before)p1.png)
+![Query 6 Output / before pt1](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query6(before)pt1.png)
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query6(before)p2.png)
+![Query 6 Output / before pt1](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query6(before)pt2.png)
 
 *after delete*
 
-![](/Users/macbookair/Downloads/IY455/images/task_4_photos/query6(after).png)
+![Query 6 Output / after](https://raw/githubusercontent.com/d4vrn/IY455/main/assets/images/query6(after).png)
